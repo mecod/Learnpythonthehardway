@@ -18,13 +18,26 @@
 #   which one was found using the Screen.WaitForStrings method.
 #
 def Response_cr():
-    tab.Screen.Send("\r")
+    crt.Screen.Send("\r")
 	
 def Response_enable():
-    tab.Screen.Send("enable\r")
+    crt.Screen.Send("enable\r")
 	
 def Response_debug_sup():
+    crt.Screen.Send("debug support\r")
+	
+def Response_factory():
+    crt.Screen.Send("facotry\r")
+	
+def Response_fac_menu_1():
+    crt.Screen.Send("1")
+	
+def Response_fac_menu_2():
+    crt.Screen.Send("f")
 
+def Response_fac_power():
+    crt.Screen.Send("\0x1B")
+	
 response = {
     1: Response_cr(),
     2: Response_enable(),
@@ -63,7 +76,7 @@ def Main():
 
 		# Now that we've discovered text in the "nIndex"th item of our array,
 		# send the "nIndex"th item of the g_vRespondWiths array:
-		tab.Screen.Send(g_vRespondWiths[nIndex] + "\n")
+		# tab.Screen.Send(g_vRespondWiths[nIndex] + "\n")
 
 		# Now that we've sent the corresponding command, loop back up to the
 		# top and wait again for another trigger string to appear...
